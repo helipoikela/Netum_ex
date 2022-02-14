@@ -1,0 +1,22 @@
+{
+  "persons": [
+    {
+      "firstname": "Eino",
+      "lastname": "Esimerkki",
+      "age": "22",
+      "id": 543
+    },
+    {
+      "firstname": "Tarja",
+      "lastname": "Testi",
+      "age": "55",
+      "id": 577
+    },
+    {
+      "firstname": "Miina",
+      "lastname": "Malli",
+      "age": "35",
+      "id": 674
+    }
+  ]
+}
