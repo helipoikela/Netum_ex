@@ -4,6 +4,8 @@ import personService from './services/persons';
 
 import Popup from './Components/Popup';
 import PopupForm from './Components/PopupFrom';
+import Sorting from './Components/Sorting';
+import Table from './Components/Table';
 
 
 
@@ -23,8 +25,10 @@ const App: React.FC = () => {
   const [newAge, setNewAge] = useState<string>("");
   // Alustetaan useState-muuttuja popup-ikkunaa varten
   const[popupOpen, setPopupOpen] = useState<boolean>(false);
-  
+  // Alustetaan useState-muuttuja id:n käsittelyä varten
   const[currentId, setCurrentId] = useState<number>(0);
+  // Alustetaan apumuuttuja järjestämistä varten
+  const[order, setOrder] = useState<number[]>([]);
 
   // Haetaan JSON-tiedostosta data effect-hookin avulla
   useEffect(() => {
@@ -75,7 +79,6 @@ const App: React.FC = () => {
           .deletePerson(Person)
         // Poistetaan objecti taulukosta
         setPersonInfo(personInfo.filter(person => person.id != id))
-        console.log(personInfo);
       }
     }
   }
@@ -112,13 +115,37 @@ const App: React.FC = () => {
       .then(response => {
         setPersonInfo(personInfo.map(person => person.id != currentId ? person : response.data))
       })
-      
+    
     setPopupOpen(false);
 
     // Tyhjennetään input-kentät
     setNewFname('');
     setNewLname('');
     setNewAge('');
+  }
+
+  // Funktio taulun järjestämistä varten
+  const sortList = (event: React.MouseEvent<HTMLButtonElement>) => {
+    // Haetaan painetun napin nimi, sillä se vastaa kyseisten henkilötietojen id-arvoa
+    const button: HTMLButtonElement = event.currentTarget;
+    let sortBy = button.name;
+
+    if (sortBy == "firstname") {
+      setPersonInfo(personInfo.sort((a, b) => (a.firstname < b.firstname) ? -1 : 1))
+    }
+
+    if (sortBy == "lastname") {
+      setPersonInfo(personInfo.sort((a, b) => (a.lastname < b.lastname) ? -1 : 1))
+    }
+
+    if (sortBy == "age") {
+      setPersonInfo(personInfo.sort((a, b) => (a.age < b.age) ? -1 : 1))
+    }
+
+    for (let i = 0; i < personInfo.length; i++) {
+      setOrder(order.concat(personInfo[i].id));
+    }
+    console.log("Sorted List ", personInfo);
   }
 
   return <div>
@@ -150,6 +177,7 @@ const App: React.FC = () => {
         <button type="submit"> Lisää </button>
       </div>
     </form>
+    <Sorting sortList={sortList}></Sorting>
     <Popup popupOpen={popupOpen}>
       <PopupForm newFname={newFname}
                  newLname={newLname}
@@ -159,24 +187,12 @@ const App: React.FC = () => {
                  setNewAge={setNewAge}
                  modifyPerson={modifyPerson}/>
     </Popup>
-    <table>
-      <tbody>
-        <tr>
-          <td> Etunimi </td>
-          <td> Sukunimi </td>
-          <td> Ikä </td>
-        </tr>
-        {personInfo.map(person => (
-          <tr key={person.id}>
-            <td key={person.firstname}>{person.firstname}</td>
-            <td>{person.lastname}</td>
-            <td>{person.age}</td>
-            <td><button name={person.id as unknown as string} onClick={deletePerson}>Poista</button></td>
-            <td><button name={person.id as unknown as string} onClick={openPopup}>Muokkaa</button></td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <Table personInfo={personInfo}
+           deletePerson={deletePerson}
+           openPopup={openPopup}
+           order={order}
+           setOrder={setOrder}>
+    </Table>
   </div>
 }
 

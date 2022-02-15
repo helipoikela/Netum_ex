@@ -2,21 +2,21 @@
   "persons": [
     {
       "firstname": "Eino",
-      "lastname": "Esimerkki",
-      "age": "22",
+      "lastname": "Testi",
+      "age": "35",
       "id": 543
     },
     {
       "firstname": "Tarja",
-      "lastname": "Testi",
-      "age": "55",
+      "lastname": "Malli",
+      "age": "22",
       "id": 577
     },
     {
       "firstname": "Miina",
-      "lastname": "Malli",
-      "age": "35",
-      "id": 674
+      "lastname": "Esimerkki",
+      "age": "55",
+      "id": 527
     }
   ]
 }
