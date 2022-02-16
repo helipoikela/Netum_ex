@@ -1,17 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Wrapper = styled.div `
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    buttom {
-        margin-bottom: 20px;
-     }
-`;
-
 
 // Määritettään parametrien tyypit
 type Props = {
@@ -28,9 +15,8 @@ type Props = {
 const PopupForm: React.FC<Props> = ({newFname, newLname, newAge, setNewFname, setNewLname, setNewAge, modifyPerson}) => {
 
   return (
-    <Wrapper>
     <div>
-      <p className='title'>Muokkaus</p>
+      <p className='header'>Muokkaus</p>
       <form>
         <div>
           <label> Etunimi: <input 
@@ -58,7 +44,6 @@ const PopupForm: React.FC<Props> = ({newFname, newLname, newAge, setNewFname, se
         <button type="submit" onClick={modifyPerson}> Tallenna </button>
         </div>
     </div>
-    </Wrapper>
   )
 }
 

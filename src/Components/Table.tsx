@@ -36,7 +36,7 @@ const Table: React.FC<Props> = ({personInfo, deletePerson, openPopup, order, set
   return (
     <table>
       <tbody>
-        <tr>
+        <tr className="header">
           <td> Etunimi </td>
           <td> Sukunimi </td>
           <td> Ikä </td>

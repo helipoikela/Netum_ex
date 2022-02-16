@@ -11,7 +11,6 @@ td {
   width: 5cm;
   height: 0.7cm;
   text-align: center;
-  font-weight: bold;
 }
 
 label {
@@ -24,6 +23,26 @@ Button {
   font-weight: bold;
   width: 2cm;
   padding: 0.1cm;
-  margin: 0.2cm
+  margin: 0.3cm;
+  background-color: lightgray;
 }
 
+.header {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.popup {
+  position: absolute;
+  left: 30%;
+  top: 30%;
+  background-color: lightgray;
+  align-items: center;
+  justify-content: center;
+  width: 20vw;
+  padding: 20px;
+}
+
+.personform {
+  padding: 20px;
+}

@@ -6,7 +6,7 @@ import Popup from './Components/Popup';
 import PopupForm from './Components/PopupFrom';
 import Sorting from './Components/Sorting';
 import Table from './Components/Table';
-
+import PersonForm from './Components/PersonForm';
 
 
 // Määritellää rajapinta PersonInfo-tyypille
@@ -150,33 +150,13 @@ const App: React.FC = () => {
 
   return <div>
     <h1>Henkilötietotaulukko</h1>
-    <form onSubmit={addInfo}>
-      <div>
-        <label> Etunimi: <input 
-                  value={newFname}
-                  onChange={(e) => setNewFname(e.target.value)}
-                  type="firstname" 
-                  name="firstname" /></label>
-      </div>
-      <div>
-        <label> Sukunimi: <input 
-                  value={newLname}
-                  onChange={(e) => setNewLname(e.target.value)}
-                  type="lastname" 
-                  name="lastname" /></label>
-      </div>
-      <div>
-        <label> Ikä: <input 
-                  value={newAge}
-                  onChange={(e) => setNewAge(e.target.value)}
-                  type="age" 
-                  name="age" 
-                  placeholder=""/></label>
-      </div>
-      <div>
-        <button type="submit"> Lisää </button>
-      </div>
-    </form>
+    <PersonForm addInfo={addInfo}
+                newFname={newFname}
+                setNewFname={setNewFname}
+                newLname={newLname}
+                setNewLname={setNewLname}
+                newAge={newAge}
+                setNewAge={setNewAge}></PersonForm>
     <Sorting sortList={sortList}></Sorting>
     <Popup popupOpen={popupOpen}>
       <PopupForm newFname={newFname}
