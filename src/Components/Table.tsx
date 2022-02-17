@@ -8,6 +8,7 @@ interface PersonInfo {
   id: number;
 }
 
+// Määritellään parametrien tyypit
 type Props = {
   personInfo: PersonInfo[];
   deletePerson: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -16,10 +17,12 @@ type Props = {
   setOrder: React.Dispatch<React.SetStateAction<number[]>>
 };
 
+// Apumuuttuja listan järjestämistä varten
 let list: PersonInfo[];
 
+// Tämä funktio esittää henkilötieto taulukon
 const Table: React.FC<Props> = ({personInfo, deletePerson, openPopup, order, setOrder}) => {
-  
+  // Tarkistetaan tarvitseeko personInfo-taulukko järjestää uudestaan
   if (order.length > 0) {
     order.forEach(id => {
       let item = personInfo.find(i => i.id == id)

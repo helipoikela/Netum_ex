@@ -11,6 +11,7 @@ type Props = {
 
 }
 
+// Tämä metodi rakentaa kyselypohjan, johon tallennettavat tiedot kirjoitetaan
 const PersonForm: React.FC<Props> = ({addInfo, newFname, setNewFname, newLname, setNewLname, newAge, setNewAge}) => {
   return (
     <form className='personform' onSubmit={addInfo}>

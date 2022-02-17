@@ -4,6 +4,8 @@ import React from "react";
 type Props = {
   sortList: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
+
+// Tämä metodi määrittää napit taulukon järjestämistä varten
 const Sorting: React.FC<Props> = ({sortList}) => {
 
   return (
