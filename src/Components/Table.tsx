@@ -34,24 +34,26 @@ const Table: React.FC<Props> = ({personInfo, deletePerson, openPopup, order, set
   order.length = 0;
 
   return (
-    <table>
-      <tbody>
-        <tr className="header">
-          <td> Etunimi </td>
-          <td> Sukunimi </td>
-          <td> Ikä </td>
-        </tr>
-        {list.map(person => (
-          <tr key={person.id}>
-            <td key={person.firstname}>{person.firstname}</td>
-            <td>{person.lastname}</td>
-            <td>{person.age}</td>
-            <td><button name={person.id as unknown as string} onClick={deletePerson}>Poista</button></td>
-            <td><button name={person.id as unknown as string} onClick={openPopup}>Muokkaa</button></td>
+    <div className="persontable">
+      <table>
+        <tbody>
+          <tr className="header">
+            <td> Etunimi </td>
+            <td> Sukunimi </td>
+            <td> Ikä </td>
           </tr>
-        ))}
-      </tbody>
-    </table>
+          {list.map(person => (
+            <tr key={person.id}>
+              <td key={person.firstname}>{person.firstname}</td>
+              <td>{person.lastname}</td>
+              <td>{person.age}</td>
+              <td className="inlineButtons"><button name={person.id as unknown as string} onClick={deletePerson}>Poista</button>
+                  <button name={person.id as unknown as string} onClick={openPopup}>Muokkaa</button></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   )
 }
 

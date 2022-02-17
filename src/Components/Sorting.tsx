@@ -7,7 +7,8 @@ type Props = {
 const Sorting: React.FC<Props> = ({sortList}) => {
 
   return (
-    <div>
+    <div className="sorting">
+      <p className="header">Järjestä taulukko</p>
       <span> 
         <button onClick={sortList} name="firstname">Etunimi</button>      
         <button onClick={sortList} name="lastname">Sukunimi</button>
